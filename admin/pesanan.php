@@ -122,9 +122,9 @@ $pesanan = mysqli_query($koneksi, "SELECT p.*, u.nama FROM pesanan p
                                             <select name="status" class="px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:border-green-500"
                                                 onchange="this.form.submit()">
                                                 <option value="pending" <?= ($row['status'] == 'pending') ? 'selected' : ''; ?>>Pending</option>
-                                                <option value="proses" <?= ($row['status'] == 'proses') ? 'selected' : ''; ?>>Proses</option>
+                                                <option value="diproses" <?= ($row['status'] == 'diproses') ? 'selected' : ''; ?>>Proses</option>
                                                 <option value="selesai" <?= ($row['status'] == 'selesai') ? 'selected' : ''; ?>>Selesai</option>
-                                                <option value="batal" <?= ($row['status'] == 'batal') ? 'selected' : ''; ?>>Batal</option>
+                                                <option value="dibatalkan" <?= ($row['status'] == 'dibatalkan') ? 'selected' : ''; ?>>Batal</option>
                                             </select>
                                         </form>
                                     </td>
@@ -148,14 +148,14 @@ $pesanan = mysqli_query($koneksi, "SELECT p.*, u.nama FROM pesanan p
 
             <!-- DETAIL PESANAN -->
             <?php if (isset($_GET['lihat'])):
-                $pesanan_detail_id = $_GET['lihat'];
-                $detail = mysqli_query($koneksi, "SELECT pd.*, m.nama_menu FROM pesanan_detail pd 
+                $detail_pesanan_id = $_GET['lihat'];
+                $detail = mysqli_query($koneksi, "SELECT pd.*, m.nama_menu FROM detail_pesanan pd 
                                                    JOIN menu m ON pd.menu_id = m.id 
-                                                   WHERE pd.pesanan_id='$pesanan_detail_id'");
-                $pesanan_info = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM pesanan WHERE id='$pesanan_detail_id'"));
+                                                   WHERE pd.pesanan_id='$detail_pesanan_id'");
+                $pesanan_info = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM pesanan WHERE id='$detail_pesanan_id'"));
             ?>
                 <div class="bg-white p-6 rounded-xl shadow-lg mt-8">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Detail Pesanan #<?= $pesanan_detail_id; ?></h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Detail Pesanan #<?= $detail_pesanan_id; ?></h3>
 
                     <div class="mb-6">
                         <table class="w-full">

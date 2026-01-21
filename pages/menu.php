@@ -1,8 +1,10 @@
 <?php
-session_start();
-include '../koneksi.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../koneksi.php';
+
 
 $menu = mysqli_query($koneksi, "SELECT * FROM menu ORDER BY id DESC");
+require_once __DIR__ . '/../partials/navbar.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +18,6 @@ $menu = mysqli_query($koneksi, "SELECT * FROM menu ORDER BY id DESC");
 </head>
 
 <body class="bg-gray-50">
-    <?php include '../partials/navbar.php'; ?>
 
     <!-- MENU HEADER -->
     <section class="bg-green-500 text-white py-12">

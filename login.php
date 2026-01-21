@@ -1,6 +1,6 @@
 <?php
-session_start();
-include 'koneksi.php';
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Email atau password salah";
     }
 }
+
+require_once __DIR__ . '/partials/navbar.php';
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body class="bg-gray-50">
-    <?php include 'partials/navbar.php'; ?>
 
     <section class="min-h-screen flex items-center justify-center py-12">
         <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">

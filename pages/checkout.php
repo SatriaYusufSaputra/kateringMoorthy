@@ -1,6 +1,6 @@
 <?php
-session_start();
-include '../koneksi.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../koneksi.php';
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['user'])) {
@@ -13,7 +13,7 @@ if (!isset($_SESSION['keranjang']) || count($_SESSION['keranjang']) == 0) {
     header('Location: keranjang.php');
     exit;
 }
-
+require_once __DIR__ . '/../partials/navbar.php';
 $message = '';
 $message_type = '';
 
@@ -113,6 +113,8 @@ foreach ($_SESSION['keranjang'] as $item) {
 // Ambil data user
 $user_id = $_SESSION['user'];
 $user_data = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM users WHERE id = $user_id"));
+
+
 ?>
 
 <!DOCTYPE html>
@@ -126,7 +128,6 @@ $user_data = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM users WHER
 </head>
 
 <body class="bg-gray-50">
-    <?php include '../partials/navbar.php'; ?>
 
     <!-- HEADER -->
     <section class="bg-green-500 text-white py-12">

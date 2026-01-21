@@ -1,6 +1,7 @@
 <?php
-session_start();
-include '../koneksi.php';
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/koneksi.php';
+
 
 // Cek login
 if (!isset($_SESSION['user'])) {
@@ -17,7 +18,10 @@ $pesanan = mysqli_query(
      WHERE user_id = $user_id 
      ORDER BY created_at DESC"
 );
+require_once __DIR__ . '/partials/navbar.php';
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -29,8 +33,6 @@ $pesanan = mysqli_query(
 </head>
 
 <body class="bg-gray-50">
-    <?php include '../partials/navbar.php'; ?>
-
     <!-- HEADER -->
     <section class="bg-green-500 text-white py-10">
         <div class="max-w-6xl mx-auto px-4">

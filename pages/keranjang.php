@@ -1,6 +1,6 @@
 <?php
-session_start();
-include '../koneksi.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../koneksi.php';
 
 // Proses hapus item dari keranjang
 if (isset($_GET['hapus'])) {
@@ -35,6 +35,8 @@ if (isset($_SESSION['keranjang']) && is_array($_SESSION['keranjang'])) {
         $item_count += $item['jumlah'];
     }
 }
+
+require_once __DIR__ . '/../partials/navbar.php';
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +50,6 @@ if (isset($_SESSION['keranjang']) && is_array($_SESSION['keranjang'])) {
 </head>
 
 <body class="bg-gray-50">
-    <?php include '../partials/navbar.php'; ?>
 
     <!-- HEADER -->
     <section class="bg-green-500 text-white py-12">

@@ -1,6 +1,6 @@
 <?php
-session_start();
-include '../koneksi.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../koneksi.php';
 
 // Cek apakah user adalah admin
 if (!isset($_SESSION['user']) || $_SESSION['role'] != 'admin') {
@@ -94,6 +94,7 @@ if (isset($_GET['edit'])) {
     $result = mysqli_query($koneksi, "SELECT * FROM menu WHERE id='$edit_id'");
     $edit_menu = mysqli_fetch_assoc($result);
 }
+
 ?>
 
 <!DOCTYPE html>

@@ -1,11 +1,14 @@
 <?php
-session_start();
-include 'koneksi.php';
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/koneksi.php';
 
 // Query menu dari database
 $query_menu = "SELECT * FROM menu LIMIT 3";
 $menu = mysqli_query($koneksi, $query_menu);
 ?>
+
+<?php require_once __DIR__ . '/partials/navbar.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -18,8 +21,6 @@ $menu = mysqli_query($koneksi, $query_menu);
 </head>
 
 <body class="bg-gray-50">
-
-    <?php include 'partials/navbar.php'; ?>
 
     <!-- HERO -->
     <section class="bg-green-600 text-white py-20">
