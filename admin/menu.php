@@ -14,11 +14,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     $kategori_id = $_POST['kategori_id'];
     $harga = $_POST['harga'];
     $deskripsi = $_POST['deskripsi'];
-    $foto = time() . '_' . $_FILES['foto']['name'];
     $foto_tmp = $_FILES['foto']['tmp_name'];
 
+    // Sanitasi nama file
+    $foto = basename($_FILES['foto']['name']);
+    $foto = preg_replace('/[^A-Za-z0-9._-]/', '_', $foto);
+    $foto = strtolower($foto);
+
+    // Hindari overwrite - tambah suffix jika file sudah ada
+    $upload_dir = '../assets/img/';
+    $target = $upload_dir . $foto;
+    $counter = 1;
+
+    if (file_exists($target)) {
+        $ext = pathinfo($foto, PATHINFO_EXTENSION);
+        $base = pathinfo($foto, PATHINFO_FILENAME);
+        while (file_exists($upload_dir . $base . '_' . $counter . '.' . $ext)) {
+            $counter++;
+        }
+        $foto = $base . '_' . $counter . '.' . $ext;
+    }
+
     if ($foto_tmp) {
-        move_uploaded_file($foto_tmp, '../assets/img/' . $foto);
+        move_uploaded_file($foto_tmp, $upload_dir . $foto);
     }
 
     $query = "INSERT INTO menu (nama_menu, kategori_id, harga, deskripsi, foto) 
