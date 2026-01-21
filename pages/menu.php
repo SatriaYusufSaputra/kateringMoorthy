@@ -32,7 +32,7 @@ $menu = mysqli_query($koneksi, "SELECT * FROM menu ORDER BY id DESC");
             <div class="grid md:grid-cols-3 gap-8">
                 <?php while ($row = mysqli_fetch_assoc($menu)) : ?>
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
-                        <img src="../assets/img/<?= $row['gambar']; ?>" class="h-48 w-full object-cover">
+                        <img src="../assets/img/<?= $row['foto']; ?>" class="h-48 w-full object-cover">
 
                         <div class="p-5">
                             <h3 class="text-xl font-bold text-gray-800 mb-2"><?= $row['nama_menu']; ?></h3>
@@ -45,30 +45,21 @@ $menu = mysqli_query($koneksi, "SELECT * FROM menu ORDER BY id DESC");
                                 <span class="text-2xl font-bold text-green-600">
                                     Rp <?= number_format($row['harga']); ?>
                                 </span>
-                                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                                    Stok: <?= $row['stok']; ?>
-                                </span>
                             </div>
 
-                            <?php if ($row['stok'] > 0): ?>
-                                <form action="../proses/tambah_keranjang.php" method="POST" class="mb-3">
-                                    <input type="hidden" name="menu_id" value="<?= $row['id']; ?>">
-                                    <input type="hidden" name="nama_menu" value="<?= $row['nama_menu']; ?>">
-                                    <input type="hidden" name="harga" value="<?= $row['harga']; ?>">
+                            <form action="../proses/tambah_keranjang.php" method="POST" class="mb-3">
+                                <input type="hidden" name="menu_id" value="<?= $row['id']; ?>">
+                                <input type="hidden" name="nama_menu" value="<?= $row['nama_menu']; ?>">
+                                <input type="hidden" name="harga" value="<?= $row['harga']; ?>">
 
-                                    <div class="flex gap-2">
-                                        <input type="number" name="jumlah" value="1" min="1" max="<?= $row['stok']; ?>" required
-                                            class="w-16 px-2 py-2 border border-gray-300 rounded text-center">
-                                        <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700">
-                                            + Keranjang
-                                        </button>
-                                    </div>
-                                </form>
-                            <?php else: ?>
-                                <button disabled class="w-full bg-gray-400 text-white py-2 rounded-lg font-semibold cursor-not-allowed">
-                                    Stok Habis
-                                </button>
-                            <?php endif; ?>
+                                <div class="flex gap-2">
+                                    <input type="number" name="jumlah" value="1" min="1" required
+                                        class="w-16 px-2 py-2 border border-gray-300 rounded text-center">
+                                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700">
+                                        + Keranjang
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 <?php endwhile; ?>

@@ -44,7 +44,7 @@ $menu = mysqli_query($koneksi, $query_menu);
             <div class="grid md:grid-cols-3 gap-6">
                 <?php while ($row = mysqli_fetch_assoc($menu)) : ?>
                     <div class="bg-white rounded-xl shadow p-4">
-                        <img src="assets/img/<?= $row['gambar']; ?>" class="h-40 w-full object-cover rounded-lg">
+                        <img src="assets/img/<?= $row['foto']; ?>" class="h-40 w-full object-cover rounded-lg">
                         <h4 class="text-lg font-semibold mt-3"><?= $row['nama_menu']; ?></h4>
                         <p class="text-green-600 font-bold">
                             Rp <?= number_format($row['harga']); ?>
