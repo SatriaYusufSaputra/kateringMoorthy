@@ -179,6 +179,4 @@ $user_data = mysqli_fetch_all($users, MYSQLI_ASSOC);
             <p class="text-gray-600 mt-4">Total: <strong><?= count($user_data); ?></strong> user</p>
         </main>
     </div>
-</body>
-
-</html>
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>

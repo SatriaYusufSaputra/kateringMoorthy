@@ -38,9 +38,20 @@ require_once __DIR__ . '/../partials/navbar.php';
                         <div class="p-5">
                             <h3 class="text-xl font-bold text-gray-800 mb-2"><?= $row['nama_menu']; ?></h3>
 
-                            <p class="text-gray-600 text-sm mb-4">
+                            <p class="text-gray-600 text-sm mb-2">
                                 <?= substr($row['deskripsi'], 0, 50); ?>...
                             </p>
+
+                            <button
+                                onclick="openModal(
+                                    '<?= htmlspecialchars($row['nama_menu'], ENT_QUOTES); ?>',
+                                    '<?= htmlspecialchars($row['deskripsi'], ENT_QUOTES); ?>',
+                                    <?= $row['harga']; ?>,
+                                    '<?= $row['foto']; ?>'
+                                )"
+                                class="text-green-600 font-semibold text-sm hover:underline mb-3">
+                                Lihat Detail
+                            </button>
 
                             <div class="flex justify-between items-center mb-4">
                                 <span class="text-2xl font-bold text-green-600">
@@ -75,6 +86,39 @@ require_once __DIR__ . '/../partials/navbar.php';
     </section>
 
     <?php include '../partials/footer.php'; ?>
-</body>
+    
+    <!-- MODAL -->
+    <div id="menuModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white max-w-lg w-full rounded-xl shadow-lg p-6 relative">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
+                ✕
+            </button>
 
-</html>
+            <img id="modalImage" src="" class="w-full h-48 object-cover rounded-lg mb-4">
+
+            <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 mb-2"></h2>
+
+            <p id="modalDesc" class="text-gray-600 mb-4"></p>
+
+            <div class="text-right">
+                <span id="modalPrice" class="text-2xl font-bold text-green-600"></span>
+            </div>
+        </div>
+    </div>
+    <script>
+    function openModal(nama, deskripsi, harga, foto) {
+        document.getElementById('modalTitle').innerText = nama;
+        document.getElementById('modalDesc').innerText = deskripsi;
+        document.getElementById('modalPrice').innerText = 'Rp ' + harga.toLocaleString('id-ID');
+        document.getElementById('modalImage').src = '../assets/img/' + foto;
+
+        document.getElementById('menuModal').classList.remove('hidden');
+        document.getElementById('menuModal').classList.add('flex');
+    }
+
+    function closeModal() {
+        document.getElementById('menuModal').classList.add('hidden');
+    }
+    </script>
+
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>

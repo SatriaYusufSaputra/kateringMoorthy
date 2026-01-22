@@ -271,8 +271,4 @@ $user_data = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM users WHER
             </div>
         </div>
     </section>
-
-    <?php include '../partials/footer.php'; ?>
-</body>
-
-</html>
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>

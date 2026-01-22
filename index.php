@@ -7,20 +7,11 @@ $query_menu = "SELECT * FROM menu LIMIT 3";
 $menu = mysqli_query($koneksi, $query_menu);
 ?>
 
-<?php require_once __DIR__ . '/partials/navbar.php'; ?>
-
-
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Moorthy Shop</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-
-<body class="bg-gray-50">
+<?php 
+$page_title = 'Index - Moorthy Shop';
+require_once __DIR__ . '/partials/header.php';
+require_once __DIR__ . '/partials/navbar.php'; 
+?>
 
     <!-- HERO -->
     <section class="bg-green-600 text-white py-20">
@@ -61,7 +52,4 @@ $menu = mysqli_query($koneksi, $query_menu);
             </div>
         </div>
     </section>
-
-</body>
-
-</html>
+<?php require_once __DIR__ . '/partials/footer.php'; ?>

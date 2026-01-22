@@ -171,9 +171,9 @@ $pesanan = mysqli_query($koneksi, "SELECT p.*, u.nama FROM pesanan p
                                 <?php while ($item = mysqli_fetch_assoc($detail)) : ?>
                                     <tr class="border-b">
                                         <td class="py-3 px-4"><?= $item['nama_menu']; ?></td>
-                                        <td class="py-3 px-4"><?= $item['jumlah']; ?></td>
+                                        <td class="py-3 px-4"><?= $item['qty']; ?></td>
                                         <td class="py-3 px-4">Rp <?= number_format($item['harga']); ?></td>
-                                        <td class="py-3 px-4 font-semibold">Rp <?= number_format($item['jumlah'] * $item['harga']); ?></td>
+                                        <td class="py-3 px-4 font-semibold">Rp <?= number_format($item['qty'] * $item['harga']); ?></td>
                                     </tr>
                                 <?php endwhile; ?>
                             </tbody>
@@ -195,6 +195,4 @@ $pesanan = mysqli_query($koneksi, "SELECT p.*, u.nama FROM pesanan p
             <?php endif; ?>
         </main>
     </div>
-</body>
-
-</html>
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>

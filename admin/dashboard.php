@@ -140,6 +140,4 @@ $total_revenue = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(total_har
             </div>
         </main>
     </div>
-</body>
-
-</html>
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>

@@ -70,6 +70,4 @@ require_once __DIR__ . '/partials/navbar.php';
             </p>
         </div>
     </section>
-</body>
-
-</html>
+<?php require_once __DIR__ . '/partials/footer.php'; ?>

@@ -267,6 +267,4 @@ if (isset($_GET['edit'])) {
             </div>
         </main>
     </div>
-</body>
-
-</html>
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>

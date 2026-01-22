@@ -21,8 +21,6 @@ $pesanan = mysqli_query(
 require_once __DIR__ . '/partials/navbar.php';
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -138,7 +136,4 @@ require_once __DIR__ . '/partials/navbar.php';
         </div>
     </section>
 
-    <?php include '../partials/footer.php'; ?>
-</body>
-
-</html>
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>
