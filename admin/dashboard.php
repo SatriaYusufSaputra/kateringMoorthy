@@ -36,7 +36,7 @@ $total_revenue = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(total_har
         </div>
     </nav>
 
-    <!-- SIDEBAR & CONTENT -->
+   <!-- SIDEBAR & CONTENT -->
     <div class="flex">
         <!-- SIDEBAR -->
         <aside class="w-64 bg-white shadow-lg min-h-screen">
@@ -59,6 +59,11 @@ $total_revenue = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(total_har
                         </a>
                     </li>
                     <li>
+                        <a href="kategori.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg font-semibold">
+                            Kelola Kategori
+                        </a>
+                    </li>
+                    <li>
                         <a href="users.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg font-semibold">
                             Pengguna
                         </a>
@@ -66,6 +71,7 @@ $total_revenue = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT SUM(total_har
                 </ul>
             </div>
         </aside>
+
 
         <!-- MAIN CONTENT -->
         <main class="flex-1 p-8">

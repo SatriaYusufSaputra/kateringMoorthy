@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/config.php';
-require_once __DIR__ . '/koneksi.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../koneksi.php';
 
 
 // Cek login
@@ -18,7 +18,7 @@ $pesanan = mysqli_query(
      WHERE user_id = $user_id 
      ORDER BY created_at DESC"
 );
-require_once __DIR__ . '/partials/navbar.php';
+require_once __DIR__ . '/../partials/navbar.php';
 ?>
 
 <!DOCTYPE html>

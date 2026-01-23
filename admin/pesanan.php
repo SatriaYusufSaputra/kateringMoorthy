@@ -49,7 +49,7 @@ $pesanan = mysqli_query($koneksi, "SELECT p.*, u.nama FROM pesanan p
         </div>
     </nav>
 
-    <!-- SIDEBAR & CONTENT -->
+   <!-- SIDEBAR & CONTENT -->
     <div class="flex">
         <!-- SIDEBAR -->
         <aside class="w-64 bg-white shadow-lg min-h-screen">
@@ -69,6 +69,11 @@ $pesanan = mysqli_query($koneksi, "SELECT p.*, u.nama FROM pesanan p
                     <li>
                         <a href="pesanan.php" class="block px-4 py-2 bg-green-600 text-white rounded-lg font-semibold">
                             Pesanan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="kategori.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg font-semibold">
+                            Kelola Kategori
                         </a>
                     </li>
                     <li>

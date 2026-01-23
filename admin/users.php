@@ -97,6 +97,11 @@ $user_data = mysqli_fetch_all($users, MYSQLI_ASSOC);
                         </a>
                     </li>
                     <li>
+                        <a href="kategori.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg font-semibold">
+                            Kelola Kategori
+                        </a>
+                    </li>
+                    <li>
                         <a href="users.php" class="block px-4 py-2 bg-green-600 text-white rounded-lg font-semibold">
                             Pengguna
                         </a>
@@ -179,4 +184,4 @@ $user_data = mysqli_fetch_all($users, MYSQLI_ASSOC);
             <p class="text-gray-600 mt-4">Total: <strong><?= count($user_data); ?></strong> user</p>
         </main>
     </div>
-<?php require_once __DIR__ . '/../partials/footer.php'; ?>
+    <?php require_once __DIR__ . '/../partials/footer.php'; ?>
