@@ -52,14 +52,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 alamat,
                 catatan,
                 tanggal_pengiriman,
-                status
+                metode_pembayaran,
+                status,
+                status_pembayaran
             ) VALUES (
                 $user_id,
                 $total_harga,
                 '$alamat',
                 '$catatan',
                 '$tanggal_pengiriman',
-                'pending'
+                '$metode_pembayaran',
+                'pending',
+                'unpaid'
             )
         ";
 
@@ -90,9 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Kosongkan keranjang
             unset($_SESSION['keranjang']);
-
-            // Redirect sukses
-            header('Location: pesanan_saya.php?sukses=' . $pesanan_id);
+            
+            header('Location: pembayaran.php?order=' . $pesanan_id);
             exit;
 
         } else {
